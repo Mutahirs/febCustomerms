@@ -10,20 +10,11 @@ import java.util.List;
 
 @Service
 public interface CustomerService {
-
-    @Autowired
-     public ElasticsearchClient elasticsearchClient = null;
-
     Customer save(Customer customerMS);
-
     List<Customer> fetchCustomersList();
-
     Customer getCustomerById(int id);
-
     abstract Customer updateCustomer(Customer customerMS, int id);
-
     void deleteCustomer(int id);
-
-
+    List<String> findByNameLike(String s);
 }
 

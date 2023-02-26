@@ -4,26 +4,17 @@ import CustomerMS.Entity.Customer;
 import CustomerMS.MicroserviceApplication;
 import CustomerMS.Repository.CustomerRepository;
 import CustomerMS.Service.CustomerService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
-
-
-
 @RestController
 @RequestMapping("/")
 public class CustomerController {
-
     static Logger logger= LogManager.getLogger(MicroserviceApplication.class);
-
     @Autowired
     CustomerService customerService;
     @Autowired
@@ -56,7 +47,7 @@ public class CustomerController {
     // Updating the customer details
     @PutMapping("/updateCustomer/{id}")
     public Customer updateCustomer(@RequestBody Customer customer,
-                                    @PathVariable("id") int id)
+                                   @PathVariable("id") int id)
     {
         logger.info("Updating the customer details");
         return customerService.updateCustomer(
@@ -74,10 +65,15 @@ public class CustomerController {
     }
 
     // searching customer by name
-    @GetMapping("/Customer/{name}")
+    @GetMapping("/customer/{name}")
     public ResponseEntity<List<Customer>> getCustomerByName(@PathVariable String name) {
         logger.info("Searching customer by name");
         return new ResponseEntity<List<Customer>>(customerRepository.findByName(name), HttpStatus.OK);
     }
 
+    // searching customer by keywords and returns names
+    @GetMapping("/customer/name")
+    public List<String> findUsersByKeyword(@RequestParam("keyword") String keyword) {
+        return customerService.findByNameLike(keyword);
+    }
 }

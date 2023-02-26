@@ -5,10 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
-
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -26,12 +22,12 @@ public class Customer {
     String address2;
     @Column(name = "email_Id")
     String emailId;
+    @Column(name = "customer_Id")
+    int customerId;
     @Column(name = "pan_Card")
     String panCard;
     String dob;
     String gender;
-
-
 }
 
 
