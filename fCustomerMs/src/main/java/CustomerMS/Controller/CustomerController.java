@@ -65,8 +65,8 @@ public class CustomerController {
     }
 
     // searching customer by name
-    @GetMapping("/customer/{name}")
-    public ResponseEntity<List<Customer>> getCustomerByName(@PathVariable String name) {
+    @GetMapping("/customerName")
+    public ResponseEntity<List<Customer>> getCustomerByName(@RequestParam(value="name") String name) {
         logger.info("Searching customer by name");
         return new ResponseEntity<List<Customer>>(customerRepository.findByName(name), HttpStatus.OK);
     }
