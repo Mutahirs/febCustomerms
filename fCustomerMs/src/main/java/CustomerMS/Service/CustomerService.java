@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public interface CustomerService {
-    Customer save(Customer customerMS);
+    Customer addCust(Customer customerMS);
     List<Customer> fetchCustomersList();
     Customer getCustomerById(int id);
     abstract Customer updateCustomer(Customer customerMS, int id);

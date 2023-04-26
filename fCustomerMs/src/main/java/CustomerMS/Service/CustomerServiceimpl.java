@@ -14,7 +14,7 @@ import java.util.List;
 public class CustomerServiceimpl implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
-    public Customer save(Customer customer)
+    public Customer addCust(Customer customer)
     {
         return customerRepository.save(customer);
     }

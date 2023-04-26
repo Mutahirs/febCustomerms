@@ -25,7 +25,7 @@ public class CustomerController {
     public Customer addCustomer(@RequestBody Customer customerMS)
     {
         logger.info("Adding customer to list");
-        return customerService.save(customerMS);
+        return customerService.addCust(customerMS);
     }
 
     // To get list of all customers
@@ -65,8 +65,8 @@ public class CustomerController {
     }
 
     // searching customer by name
-    @GetMapping("/customer/{name}")
-    public ResponseEntity<List<Customer>> getCustomerByName(@PathVariable String name) {
+    @GetMapping("/customerName")
+    public ResponseEntity<List<Customer>> getCustomerByName(@RequestParam(value = "name") String name) {
         logger.info("Searching customer by name");
         return new ResponseEntity<List<Customer>>(customerRepository.findByName(name), HttpStatus.OK);
     }
