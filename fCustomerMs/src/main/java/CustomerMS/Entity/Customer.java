@@ -37,7 +37,6 @@ public class Customer {
     String Shahrukh;
     String salman;
 
-
 }
 
 
