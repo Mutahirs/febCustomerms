@@ -34,7 +34,7 @@ public class Customer {
     String age;
     String weight;
     String contact_no;
-    String sharukh;
+    String Shahrukh;
     String salman;
 
 
