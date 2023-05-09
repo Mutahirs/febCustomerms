@@ -34,6 +34,8 @@ public class Customer {
     String passport;
     String college_id;
     String passbook;
+    String tom_hardy;
+    String tom_cruise;
 }
 
 
