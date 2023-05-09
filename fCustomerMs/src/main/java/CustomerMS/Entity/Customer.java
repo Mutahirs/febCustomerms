@@ -28,6 +28,9 @@ public class Customer {
     String panCard;
     String dob;
     String gender;
+    String adhaar;
+    String voter_id;
+    String driving_license;
 }
 
 
