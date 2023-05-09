@@ -31,7 +31,10 @@ public class Customer {
     int hgt;
     String country;
     double pin;
-    
+    String age;
+    String weight;
+    String contact_no;
+
 }
 
 
