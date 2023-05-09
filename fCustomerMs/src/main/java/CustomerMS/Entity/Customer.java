@@ -31,6 +31,9 @@ public class Customer {
     String adhaar;
     String voter_id;
     String driving_license;
+    String passport;
+    String college_id;
+    String passbook;
 }
 
 
