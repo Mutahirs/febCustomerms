@@ -28,6 +28,10 @@ public class Customer {
     String panCard;
     String dob;
     String gender;
+    int hgt;
+    String country;
+    double pin;
+    
 }
 
 
