@@ -42,7 +42,10 @@ public class Customer {
 
     int zip;
     int code;
-
+public int getZip(){
+    return this.zip=zip
+    }
+    
 }
 
 
