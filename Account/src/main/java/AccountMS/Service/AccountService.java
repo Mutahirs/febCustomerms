@@ -9,16 +9,11 @@ import java.util.List;
 
 @Service
 public interface AccountService {
-
-     //public Account save(Account account);
-
     List<Account> fetchAccountsList();
-
-    public Account updateAccount(Account account, int accountNumber);
-    public Account getAccount(int accountNumber);
-    void deleteAccount(int accountNumber);
-
+    public Account updateAccount(Account account, int accountId);
+    public Account getAccount(int accountId);
+    void deleteAccount(int accountId);
     Account addAccount(Account account);
-
+    List<Account> findByAccountNumber(int accountNumber);
 
 }

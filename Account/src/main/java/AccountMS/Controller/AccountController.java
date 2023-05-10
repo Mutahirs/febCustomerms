@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
@@ -50,38 +51,48 @@ public class AccountController {
         }
     }
 
-    @GetMapping("/getAccount/{accountNumber}")
-    public ResponseEntity<?> getAccount(@PathVariable ("accountNumber") int accountNumber) {
+    @GetMapping("/getAccount/{id}")
+    public ResponseEntity<?> getAccount(@PathVariable ("id") int accountId) {
         try {
-            Account getAcc = accountService.getAccount(accountNumber);
-            return new ResponseEntity<Account>(getAcc, HttpStatus.OK);
-        } catch (BusinessException e) {
+            logger.info("Displaying account details by account number");
+            Account getAcc = accountService.getAccount(accountId);
+            return new ResponseEntity<Account>(getAcc, HttpStatus.CREATED);
+
+        }
+        catch (BusinessException e){
             ControllerException ce=new ControllerException(e.getErrorCode(),e.getErrorMessage());
             return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
-        } catch (Exception e) {
+
+        }catch (Exception e) {
             ControllerException ce=new ControllerException("611","Something went wrong in controller");
-            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+            throw new ControllerException(e.getMessage(),e.getMessage());
         }
 
     }
 
+    //get account details by account number
+    @GetMapping("/getByAccount/{accountNumber}")
+    public List<Account> getByAccount(@PathVariable ("accountNumber") int accountNumber){
+        return accountService.findByAccountNumber(accountNumber);
+    }
+
     //Update Operation
-    @PutMapping("/updateAccount/{accountNumber}")
+    @PutMapping("/updateAccount/{accountId}")
     public Account updateAccount(@RequestBody Account account,
-                                 @PathVariable("accountNumber") int accountNumber)
+                                 @PathVariable("accountId") int accountId)
     {
         logger.info("updating the account details");
         return (Account) accountService.updateAccount(
-                (AccountMS.Entity.Account) account, accountNumber);
+                (AccountMS.Entity.Account) account, accountId);
     }
 
     // Delete operation
-    @DeleteMapping("deleteAccount/{accountNumber}")
-    public String deleteAccount(@PathVariable("accountNumber")
-                                int accountNumber) {
+    @DeleteMapping("deleteAccount/{accountId}")
+    public String deleteAccount(@PathVariable("accountId")
+                                int accountId) {
         try {
             logger.info("Deleting the account");
-            accountService.deleteAccount(accountNumber);
+            accountService.deleteAccount(accountId);
             return "Deleted Successfully";
         } catch (BusinessException e) {
             ControllerException ce=new ControllerException(e.getErrorCode(),e.getErrorMessage());

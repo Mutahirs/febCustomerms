@@ -27,7 +27,4 @@ public class Account {
     @Column(name = "account_Type")
     String accountType;
     String status;
-
-
-
-}
+    }
