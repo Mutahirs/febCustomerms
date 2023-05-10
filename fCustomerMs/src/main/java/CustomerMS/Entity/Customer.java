@@ -37,11 +37,8 @@ public class Customer {
     String Shahrukh;
     String salman;
 
-
     String city;
-
     String prop;
-
 
     int zip;
     int code;
