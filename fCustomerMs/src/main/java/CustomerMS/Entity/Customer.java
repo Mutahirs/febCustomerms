@@ -36,8 +36,8 @@ public class Customer {
     String contact_no;
     String Shahrukh;
     String salman;
-
-
+    int zip;
+    int code;
 }
 
 
